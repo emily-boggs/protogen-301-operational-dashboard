@@ -39,9 +39,9 @@ function priorityLabel(priority: string): string {
 </script>
 
 <template>
-  <div class="glass-card">
-    <div class="d-flex align-center mb-4">
-      <v-icon icon="mdi-clipboard-check" color="primary" size="28" class="mr-3" />
+  <section class="dash-card" aria-label="Action Items">
+    <div class="d-flex align-center mb-5">
+      <v-icon icon="mdi-clipboard-check" color="primary" size="28" class="mr-4" aria-hidden="true" />
       <h3>Action Items</h3>
       <v-spacer />
       <v-chip size="small" color="primary" variant="tonal">
@@ -53,14 +53,15 @@ function priorityLabel(priority: string): string {
       <div
         v-for="item in items"
         :key="item.id"
-        class="action-item d-flex align-start mb-3 pa-3"
-        style="background: rgba(255,255,255,0.3); border-radius: 12px;"
+        class="action-item d-flex align-start mb-4 pa-4"
+        style="background: rgba(245,246,250,0.8); border-radius: 14px;"
       >
         <v-icon
           :icon="item.icon"
           :color="priorityColor(item.priority)"
           size="24"
-          class="mr-3 mt-1"
+          class="mr-4 mt-1"
+          aria-hidden="true"
         />
         <div class="flex-grow-1">
           <div class="d-flex align-center mb-1">
@@ -77,16 +78,16 @@ function priorityLabel(priority: string): string {
               {{ priorityLabel(item.priority) }}
             </v-chip>
           </div>
-          <p style="font-family: 'Open Sans', sans-serif; font-size: 0.82rem; opacity: 0.85;">
+          <p style="font-family: 'Open Sans', sans-serif; font-size: 0.82rem; color: #455A64;">
             {{ item.description }}
           </p>
-          <div class="text-caption mt-1" style="opacity: 0.6;">
+          <div class="text-caption mt-1" style="color: #546E7A;">
             Due: {{ item.dueDate }}
           </div>
         </div>
       </div>
     </TransitionGroup>
-  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -101,5 +102,12 @@ function priorityLabel(priority: string): string {
 .list-leave-to {
   opacity: 0;
   transform: translateY(-12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .list-enter-active,
+  .list-leave-active {
+    transition: none;
+  }
 }
 </style>

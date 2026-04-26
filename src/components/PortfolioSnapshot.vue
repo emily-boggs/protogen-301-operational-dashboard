@@ -37,17 +37,18 @@ function statusIcon(status: string): string {
 </script>
 
 <template>
+  <div>
   <!-- Client View -->
-  <section v-if="activeRole === 'client'" class="glass-card" aria-label="Portfolio Snapshot">
-    <div class="d-flex align-center mb-4">
-      <v-icon icon="mdi-chart-pie" color="primary" size="28" class="mr-3" aria-hidden="true" />
+  <section v-if="activeRole === 'client'" class="dash-card" aria-label="Portfolio Snapshot">
+    <div class="d-flex align-center mb-5">
+      <v-icon icon="mdi-chart-pie" color="primary" size="28" class="mr-4" aria-hidden="true" />
       <h3>Portfolio Snapshot</h3>
     </div>
 
-    <div class="d-flex flex-wrap ga-6 mb-4">
+    <div class="d-flex flex-wrap ga-8 mb-5">
       <div>
         <div class="text-caption" style="font-family: 'Open Sans', sans-serif;">Total Assets Under Management</div>
-        <div class="stat-number" style="color: #1A237E;">{{ formatCurrency(client.totalAUM) }}</div>
+        <div class="stat-number" style="color: #1C2536;">{{ formatCurrency(client.totalAUM) }}</div>
       </div>
       <div>
         <div class="text-caption" style="font-family: 'Open Sans', sans-serif;">Year-to-Date Return</div>
@@ -59,12 +60,12 @@ function statusIcon(status: string): string {
       </div>
     </div>
 
-    <h4 class="mb-3">Asset Allocation</h4>
+    <h4 class="mb-4">Asset Allocation</h4>
     <div class="allocation-bars">
       <div
         v-for="item in client.allocation"
         :key="item.category"
-        class="allocation-item mb-2"
+        class="allocation-item mb-3"
       >
         <div class="d-flex justify-space-between mb-1">
           <span style="font-family: 'Open Sans', sans-serif; font-size: 0.85rem;">{{ item.category }}</span>
@@ -85,15 +86,15 @@ function statusIcon(status: string): string {
   </section>
 
   <!-- Advisor View -->
-  <section v-else-if="activeRole === 'advisor'" class="glass-card" aria-label="Client Overview">
-    <div class="d-flex align-center mb-4">
-      <v-icon icon="mdi-account-group" color="primary" size="28" class="mr-3" aria-hidden="true" />
+  <section v-else-if="activeRole === 'advisor'" class="dash-card" aria-label="Client Overview">
+    <div class="d-flex align-center mb-5">
+      <v-icon icon="mdi-account-group" color="primary" size="28" class="mr-4" aria-hidden="true" />
       <h3>Client Overview</h3>
     </div>
 
-    <div class="d-flex flex-wrap ga-6 mb-5">
+    <div class="d-flex flex-wrap ga-8 mb-6">
       <div class="text-center">
-        <div class="stat-number" style="color: #1A237E;">{{ advisor.clientCount }}</div>
+        <div class="stat-number" style="color: #1C2536;">{{ advisor.clientCount }}</div>
         <div class="text-caption">Total Clients</div>
       </div>
       <div class="text-center">
@@ -105,12 +106,12 @@ function statusIcon(status: string): string {
         <div class="text-caption">Reviews Due</div>
       </div>
       <div class="text-center">
-        <div class="stat-number" style="color: #FF8A65;">{{ advisor.driftAlerts }}</div>
+        <div class="stat-number" style="color: #EA580C;">{{ advisor.driftAlerts }}</div>
         <div class="text-caption">Drift Alerts</div>
       </div>
     </div>
 
-    <h4 class="mb-3">Top Clients</h4>
+    <h4 class="mb-4">Top Clients</h4>
     <v-list bg-color="transparent" density="compact">
       <v-list-item
         v-for="c in advisor.topClients"
@@ -132,9 +133,10 @@ function statusIcon(status: string): string {
   </section>
 
   <!-- Placeholder for other roles -->
-  <section v-else class="glass-card text-center pa-8" aria-label="Persona view coming soon">
+  <section v-else class="dash-card text-center pa-8" aria-label="Persona view coming soon">
     <v-icon icon="mdi-hard-hat" size="48" color="secondary" class="mb-3" aria-hidden="true" />
     <h3>Coming Soon</h3>
     <p style="font-family: 'Open Sans', sans-serif;">This persona view is under development.</p>
   </section>
+  </div>
 </template>

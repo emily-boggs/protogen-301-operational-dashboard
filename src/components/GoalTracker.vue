@@ -43,9 +43,9 @@ function formatCurrency(value: number): string {
 </script>
 
 <template>
-  <section class="glass-card" aria-label="Financial Goals">
-    <div class="d-flex align-center mb-4">
-      <v-icon icon="mdi-target" color="primary" size="28" class="mr-3" aria-hidden="true" />
+  <section class="dash-card" aria-label="Financial Goals">
+    <div class="d-flex align-center mb-5">
+      <v-icon icon="mdi-target" color="primary" size="28" class="mr-4" aria-hidden="true" />
       <h3>Financial Goals</h3>
     </div>
 
@@ -53,10 +53,10 @@ function formatCurrency(value: number): string {
       <div
         v-for="goal in goals"
         :key="goal.id"
-        class="goal-item mb-4"
+        class="goal-item mb-5"
       >
         <div class="d-flex align-center mb-2">
-          <v-icon :icon="goal.icon" color="primary" size="22" class="mr-2" aria-hidden="true" />
+          <v-icon :icon="goal.icon" color="primary" size="22" class="mr-3" aria-hidden="true" />
           <h4 style="font-size: 1rem;">{{ goal.name }}</h4>
           <v-spacer />
           <v-chip

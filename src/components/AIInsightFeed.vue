@@ -20,9 +20,9 @@ watch(() => props.activeRole, () => {
 </script>
 
 <template>
-  <div class="glass-card ai-insight-feed">
-    <div class="d-flex align-center mb-4">
-      <v-icon icon="mdi-robot" color="secondary" size="28" class="mr-3" />
+  <section class="dash-card ai-insight-feed" aria-label="AI Insights">
+    <div class="d-flex align-center mb-5">
+      <v-icon icon="mdi-robot" color="secondary" size="28" class="mr-4" aria-hidden="true" />
       <h3>AI Insights</h3>
     </div>
 
@@ -31,7 +31,7 @@ watch(() => props.activeRole, () => {
         v-for="(insight, index) in insights"
         v-show="!animating"
         :key="`${activeRole}-${insight.id}`"
-        class="insight-card mb-3 pa-3"
+        class="insight-card mb-4 pa-4"
         :style="{ transitionDelay: `${index * 100}ms` }"
       >
         <div class="d-flex align-start">
@@ -39,35 +39,36 @@ watch(() => props.activeRole, () => {
             :icon="insight.icon"
             color="secondary"
             size="22"
-            class="mr-3 mt-1"
+            class="mr-4 mt-1"
+            aria-hidden="true"
           />
           <div>
             <div style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 0.95rem; margin-bottom: 4px;">
               {{ insight.headline }}
             </div>
-            <p style="font-family: 'Open Sans', sans-serif; font-size: 0.82rem; opacity: 0.85; line-height: 1.5;">
+            <p style="font-family: 'Open Sans', sans-serif; font-size: 0.82rem; color: #455A64; line-height: 1.5;">
               {{ insight.description }}
             </p>
           </div>
         </div>
       </div>
     </TransitionGroup>
-  </div>
+  </section>
 </template>
 
 <style scoped>
 .ai-insight-feed {
-  border-left: 3px solid #FF8A65;
+  border-left: none;
 }
 
 .insight-card {
-  background: rgba(255, 138, 101, 0.08);
+  background: #F5F6FA;
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .insight-card:hover {
-  background: rgba(255, 138, 101, 0.15);
+  background: #ECEEF4;
 }
 
 .insight-enter-active {
@@ -77,5 +78,14 @@ watch(() => props.activeRole, () => {
 .insight-enter-from {
   opacity: 0;
   transform: translateY(16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insight-card {
+    transition: none;
+  }
+  .insight-enter-active {
+    transition: none;
+  }
 }
 </style>
