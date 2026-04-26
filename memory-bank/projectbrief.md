@@ -177,6 +177,27 @@ SLA status, and compliance flags for internal SEI operations staff.
   or glow effect
 - Page/section transitions using Vue's `<Transition>` component
 - Insight cards animate in on load with a soft fade + slide up
+- All animations respect `prefers-reduced-motion: reduce`
+
+### Accessibility (WCAG 2.1 AA)
+- **Color contrast:** All text meets WCAG AA minimum contrast
+  ratios — 4.5:1 for normal text, 3:1 for large text
+- **Keyboard navigation:** All interactive elements are reachable
+  and operable via keyboard with visible focus indicators
+- **Skip navigation:** A skip-to-content link is provided for
+  keyboard users to bypass repeated navigation
+- **ARIA landmarks:** Proper landmark roles (`<nav>`, `<main>`,
+  `<banner>`) used for page structure
+- **ARIA labels:** All icon-only buttons and decorative elements
+  have appropriate `aria-label` or `aria-hidden` attributes
+- **Live regions:** Role switching announces content changes to
+  screen readers via `aria-live` regions
+- **Progress bars:** All progress indicators have accessible
+  labels describing what they measure
+- **Reduced motion:** Animations are disabled or minimized when
+  `prefers-reduced-motion: reduce` is set
+- **Color independence:** Status indicators always combine
+  icon + color + text label — never rely on color alone
 
 ---
 

@@ -1,0 +1,37 @@
+{
+  "client": {
+    "name": "Margaret & Robert Chen",
+    "accountId": "SEI-4821",
+    "totalAUM": 4250000,
+    "ytdReturn": 4.2,
+    "ytdReturnDollar": 178500,
+    "lastUpdated": "2026-04-24",
+    "allocation": [
+      { "category": "US Equities", "percentage": 42, "color": "#42A5F5" },
+      { "category": "International Equities", "percentage": 18, "color": "#66BB6A" },
+      { "category": "Fixed Income", "percentage": 25, "color": "#FF8A65" },
+      { "category": "Alternatives", "percentage": 10, "color": "#AB47BC" },
+      { "category": "Cash", "percentage": 5, "color": "#BDBDBD" }
+    ],
+    "targetAllocation": [
+      { "category": "US Equities", "percentage": 40 },
+      { "category": "International Equities", "percentage": 20 },
+      { "category": "Fixed Income", "percentage": 25 },
+      { "category": "Alternatives", "percentage": 10 },
+      { "category": "Cash", "percentage": 5 }
+    ]
+  },
+  "advisor": {
+    "clientCount": 47,
+    "flaggedClients": 8,
+    "reviewsDue": 3,
+    "driftAlerts": 5,
+    "topClients": [
+      { "name": "Margaret & Robert Chen", "aum": 4250000, "status": "on-track", "flag": null },
+      { "name": "David Park Family Trust", "aum": 8100000, "status": "needs-attention", "flag": "Drift alert: US Equities +4% over target" },
+      { "name": "Sarah Mitchell", "aum": 1850000, "status": "action-required", "flag": "Annual review overdue by 30 days" },
+      { "name": "Thompson Estate", "aum": 12500000, "status": "needs-attention", "flag": "Rebalancing recommended" },
+      { "name": "Lisa & James Wong", "aum": 3200000, "status": "on-track", "flag": null }
+    ]
+  }
+}

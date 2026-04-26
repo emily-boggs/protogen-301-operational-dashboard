@@ -1,0 +1,54 @@
+{
+  "client": [
+    {
+      "id": 1,
+      "icon": "mdi-trending-up",
+      "headline": "Your Portfolio is Growing",
+      "description": "Your investments are up 4.2% year-to-date, outperforming the market average of 3.8%. Your diversified strategy is paying off."
+    },
+    {
+      "id": 2,
+      "icon": "mdi-target",
+      "headline": "Retirement Goal on Track",
+      "description": "At your current savings rate, you're projected to reach your $3M retirement goal by 2033 — one year ahead of schedule."
+    },
+    {
+      "id": 3,
+      "icon": "mdi-shield-check",
+      "headline": "Risk Level Looks Good",
+      "description": "Your portfolio risk level matches your comfort zone. No changes recommended at this time."
+    },
+    {
+      "id": 4,
+      "icon": "mdi-lightbulb",
+      "headline": "Education Fund Tip",
+      "description": "Consider increasing your monthly education fund contribution by $200 to stay on pace for the 2030 target."
+    }
+  ],
+  "advisor": [
+    {
+      "id": 1,
+      "icon": "mdi-alert",
+      "headline": "8 Clients Need Attention",
+      "description": "5 drift alerts, 2 overdue reviews, and 1 compliance flag across your book of business. Prioritize Park Family Trust and Mitchell accounts."
+    },
+    {
+      "id": 2,
+      "icon": "mdi-chart-bar",
+      "headline": "Market Shift: Fixed Income",
+      "description": "Recent rate changes create rebalancing opportunities for 12 clients with fixed income targets above 20%."
+    },
+    {
+      "id": 3,
+      "icon": "mdi-account-group",
+      "headline": "Client Engagement Score",
+      "description": "Your average client engagement score is 82/100. The Mitchell and Wong accounts have the lowest engagement — consider outreach."
+    },
+    {
+      "id": 4,
+      "icon": "mdi-calendar-check",
+      "headline": "Q1 Reviews Summary",
+      "description": "35 of 47 quarterly reviews completed. 12 remaining — deadline is May 1. On track if you complete 3 per day."
+    }
+  ]
+}

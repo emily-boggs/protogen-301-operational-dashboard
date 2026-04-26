@@ -49,3 +49,17 @@
 - No backend API calls — all data is static mock JSON
 - No authentication required
 - Estate Attorney, Tax Advisor, and SEI Ops personas use placeholder content only
+
+---
+
+## ♿ Accessibility Rules (WCAG 2.1 AA)
+
+- All text must meet WCAG AA contrast ratios: 4.5:1 normal text, 3:1 large text (18px+ bold or 24px+ regular)
+- All icon-only buttons must have `aria-label` attributes
+- Decorative icons must have `aria-hidden="true"`
+- Progress bars must have accessible labels (`aria-label`)
+- All interactive elements must have visible focus indicators
+- Provide a skip-to-content link before the main navigation
+- Use `aria-live="polite"` for content that changes on role switch
+- All animations must respect `prefers-reduced-motion: reduce`
+- Never rely on color alone for meaning — always pair with icon + text label

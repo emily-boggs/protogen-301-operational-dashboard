@@ -1,0 +1,78 @@
+{
+  "client": [
+    {
+      "id": 1,
+      "title": "Review Updated Financial Plan",
+      "description": "Your advisor has updated your retirement projections based on Q1 performance. Review and approve changes.",
+      "priority": "high",
+      "icon": "mdi-file-document-edit",
+      "dueDate": "2026-04-30"
+    },
+    {
+      "id": 2,
+      "title": "Sign Trust Amendment",
+      "description": "Updated beneficiary designations require your signature. Document expires May 15.",
+      "priority": "high",
+      "icon": "mdi-pen",
+      "dueDate": "2026-05-15"
+    },
+    {
+      "id": 3,
+      "title": "Schedule Annual Review",
+      "description": "Your annual portfolio review is due. Contact your advisor to schedule a meeting.",
+      "priority": "medium",
+      "icon": "mdi-calendar-clock",
+      "dueDate": "2026-05-30"
+    },
+    {
+      "id": 4,
+      "title": "Update Emergency Contacts",
+      "description": "Your account emergency contact information is over 2 years old. Please verify or update.",
+      "priority": "low",
+      "icon": "mdi-account-alert",
+      "dueDate": "2026-06-30"
+    }
+  ],
+  "advisor": [
+    {
+      "id": 1,
+      "title": "Rebalance Park Family Trust",
+      "description": "US Equities allocation has drifted +4% above target. Recommend rebalancing to restore allocation.",
+      "priority": "high",
+      "icon": "mdi-scale-unbalanced",
+      "dueDate": "2026-04-28"
+    },
+    {
+      "id": 2,
+      "title": "Complete Mitchell Annual Review",
+      "description": "Sarah Mitchell's annual review is 30 days overdue. Schedule and complete review ASAP.",
+      "priority": "high",
+      "icon": "mdi-alert-circle",
+      "dueDate": "2026-04-26"
+    },
+    {
+      "id": 3,
+      "title": "Thompson Estate Rebalancing",
+      "description": "Fixed income underweight by 3%. Market conditions favorable for rebalancing.",
+      "priority": "medium",
+      "icon": "mdi-chart-timeline-variant",
+      "dueDate": "2026-05-10"
+    },
+    {
+      "id": 4,
+      "title": "Prepare Q1 Client Reports",
+      "description": "Quarterly performance reports due for 47 clients. 12 reports remaining.",
+      "priority": "medium",
+      "icon": "mdi-file-chart",
+      "dueDate": "2026-05-01"
+    },
+    {
+      "id": 5,
+      "title": "Review Tax Loss Harvesting",
+      "description": "3 clients have potential tax loss harvesting opportunities before quarter end.",
+      "priority": "low",
+      "icon": "mdi-calculator",
+      "dueDate": "2026-06-15"
+    }
+  ]
+}

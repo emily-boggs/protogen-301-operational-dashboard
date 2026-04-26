@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Retirement",
+    "icon": "mdi-beach",
+    "target": 3000000,
+    "current": 2340000,
+    "status": "on-track",
+    "targetDate": "2034",
+    "description": "Retire comfortably by 2034 with $3M in retirement accounts"
+  },
+  {
+    "id": 2,
+    "name": "Education Fund",
+    "icon": "mdi-school",
+    "target": 250000,
+    "current": 165000,
+    "status": "on-track",
+    "targetDate": "2030",
+    "description": "Fund college education for two children"
+  },
+  {
+    "id": 3,
+    "name": "Estate Transfer",
+    "icon": "mdi-home-city",
+    "target": 1500000,
+    "current": 890000,
+    "status": "at-risk",
+    "targetDate": "2040",
+    "description": "Transfer family wealth through trust structures"
+  }
+]
