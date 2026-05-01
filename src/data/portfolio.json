@@ -1,6 +1,6 @@
 {
   "client": {
-    "name": "Margaret & Robert Chen",
+    "name": "Marsali & Robert Chen",
     "accountId": "SEI-4821",
     "totalAUM": 4250000,
     "ytdReturn": 4.2,
@@ -27,7 +27,7 @@
     "reviewsDue": 3,
     "driftAlerts": 5,
     "topClients": [
-      { "name": "Margaret & Robert Chen", "aum": 4250000, "status": "on-track", "flag": null },
+      { "name": "Marsali & Robert Chen", "aum": 4250000, "status": "on-track", "flag": null },
       { "name": "David Park Family Trust", "aum": 8100000, "status": "needs-attention", "flag": "Drift alert: US Equities +4% over target" },
       { "name": "Sarah Mitchell", "aum": 1850000, "status": "action-required", "flag": "Annual review overdue by 30 days" },
       { "name": "Thompson Estate", "aum": 12500000, "status": "needs-attention", "flag": "Rebalancing recommended" },

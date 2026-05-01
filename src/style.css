@@ -75,7 +75,7 @@ h1, h2, h3, h4, h5, h6,
 .stat-mini-card .stat-value {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   color: #1C2536;
   margin-bottom: 2px;
 }
@@ -177,6 +177,10 @@ h1, h2, h3, h4, h5, h6,
   color: #FFFFFF;
   cursor: pointer;
   transition: transform 0.15s ease;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
 }
 
 .team-avatar:hover {
@@ -186,12 +190,12 @@ h1, h2, h3, h4, h5, h6,
 /* === Chip Icon Spacing === */
 
 .v-chip .v-chip__prepend {
-  margin-inline-start: 2px;
+  margin-inline-start: 8px;
   margin-inline-end: 0px;
 }
 
 .v-chip .v-chip__content {
-  padding: 0 4px;
+  padding: 0 8px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.3px;
@@ -225,6 +229,6 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .stat-mini-card .stat-value {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }

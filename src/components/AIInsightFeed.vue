@@ -1,58 +1,78 @@
 <script setup lang="ts">
 import insightsData from '../data/insights.json'
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
-const props = defineProps<{
-  activeRole: string
-}>()
+const currentIndex = ref(0)
 
-const animating = ref(false)
+const insights = insightsData.client
 
-const insights = computed(() => {
-  const roleKey = props.activeRole as keyof typeof insightsData
-  return insightsData[roleKey] || insightsData.client
-})
+const currentInsight = computed(() => insights[currentIndex.value])
 
-watch(() => props.activeRole, () => {
-  animating.value = true
-  setTimeout(() => { animating.value = false }, 50)
-})
+function next() {
+  currentIndex.value = (currentIndex.value + 1) % insights.length
+}
+
+function prev() {
+  currentIndex.value = (currentIndex.value - 1 + insights.length) % insights.length
+}
 </script>
 
 <template>
-  <section class="dash-card ai-insight-feed" aria-label="AI Insights">
-    <div class="d-flex align-center mb-5">
-      <v-icon icon="mdi-robot" color="secondary" size="28" class="mr-4" aria-hidden="true" />
+  <section class="dash-card ai-insight-feed pa-6" aria-label="AI Insights">
+    <div class="d-flex align-center" style="margin-bottom: 24px;">
+      <v-icon icon="mdi-robot" color="secondary" size="28" style="margin-right: 10px;" aria-hidden="true" />
       <h3>AI Insights</h3>
+      <v-spacer />
+      <span style="font-size: 0.75rem; color: #78819B;">
+        {{ currentIndex + 1 }} / {{ insights.length }}
+      </span>
     </div>
 
-    <TransitionGroup name="insight" tag="div">
-      <div
-        v-for="(insight, index) in insights"
-        v-show="!animating"
-        :key="`${activeRole}-${insight.id}`"
-        class="insight-card mb-4 pa-4"
-        :style="{ transitionDelay: `${index * 100}ms` }"
-      >
-        <div class="d-flex align-start">
-          <v-icon
-            :icon="insight.icon"
-            color="secondary"
-            size="22"
-            class="mr-4 mt-1"
-            aria-hidden="true"
-          />
-          <div>
-            <div style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 0.95rem; margin-bottom: 4px;">
-              {{ insight.headline }}
+    <div class="insight-slider">
+      <Transition name="slide" mode="out-in">
+        <div
+          :key="currentInsight.id"
+          class="insight-card"
+          style="padding: 24px;"
+        >
+          <div class="d-flex align-start">
+            <v-icon
+              :icon="currentInsight.icon"
+              color="secondary"
+              size="22"
+              style="margin-right: 10px; margin-top: 4px;"
+              aria-hidden="true"
+            />
+            <div>
+              <div style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 0.95rem; margin-bottom: 8px;">
+                {{ currentInsight.headline }}
+              </div>
+              <p style="font-family: 'Open Sans', sans-serif; font-size: 0.82rem; color: #455A64; line-height: 1.6;">
+                {{ currentInsight.description }}
+              </p>
             </div>
-            <p style="font-family: 'Open Sans', sans-serif; font-size: 0.82rem; color: #455A64; line-height: 1.5;">
-              {{ insight.description }}
-            </p>
           </div>
         </div>
+      </Transition>
+    </div>
+
+    <div class="d-flex align-center justify-center" style="margin-top: 16px; gap: 12px;">
+      <button class="slider-arrow" aria-label="Previous insight" @click="prev">
+        <v-icon icon="mdi-chevron-left" size="20" />
+      </button>
+      <div class="slider-dots">
+        <span
+          v-for="(_, i) in insights"
+          :key="i"
+          class="dot"
+          :class="{ active: i === currentIndex }"
+          @click="currentIndex = i"
+        />
       </div>
-    </TransitionGroup>
+      <button class="slider-arrow" aria-label="Next insight" @click="next">
+        <v-icon icon="mdi-chevron-right" size="20" />
+      </button>
+    </div>
   </section>
 </template>
 
@@ -64,27 +84,66 @@ watch(() => props.activeRole, () => {
 .insight-card {
   background: #F5F6FA;
   border-radius: 12px;
-  transition: all 0.3s ease;
 }
 
 .insight-card:hover {
   background: #ECEEF4;
 }
 
-.insight-enter-active {
-  transition: all 0.5s ease;
+.slider-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid #ECEEF4;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease;
 }
 
-.insight-enter-from {
+.slider-arrow:hover {
+  background: #F5F6FA;
+}
+
+.slider-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ECEEF4;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dot.active {
+  background: #0E7490;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-enter-from {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateX(20px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .insight-card {
-    transition: none;
-  }
-  .insight-enter-active {
+  .slide-enter-active,
+  .slide-leave-active {
     transition: none;
   }
 }
