@@ -6,43 +6,40 @@ _Current focus, decisions, and work in progress._
 
 ## Current Phase
 
-**Project Setup & Planning** — The memory bank and project documentation are being established. No application code has been written yet.
+**Feature Complete** — The WealthPulse dashboard is fully built with role-aware functionality for Client and Financial Advisor personas.
 
 ---
 
 ## Recent Decisions
 
 - Vue 3 + Vite + Vuetify 3 selected as the tech stack
-- Glassmorphism chosen as the core design system
-- MVP scoped to Client + Financial Advisor personas only
+- Branded as "WealthPulse" (generic investment company, no specific firm)
+- Two personas implemented: Client and Financial Advisor
+- Role state managed via a shared reactive store (`src/stores/role.ts`)
+- Role switcher placed at top of dashboard content area (pill-style toggle)
 - Static JSON mock data for all widgets (no backend)
-- Vercel selected for deployment
-- Copilot Memory Bank template adopted for AI-assisted development workflow
+- Collapsible side navigation with mobile hamburger menu
+- Notifications drawer extends from sidebar
+- Profile page with notification settings
 
 ---
 
 ## Current Focus
 
-1. Finalize memory bank documentation
-2. Initialize Vue 3 + Vite + Vuetify 3 project scaffold
-3. Set up animated abstract background
-4. Build glassmorphism card design system
-5. Implement side navigation with icons
+1. Polish and QA
+2. Responsive design refinements
+3. Vercel deployment
 
 ---
 
 ## Active Questions / Open Decisions
 
-- State management approach: props drilling vs. Pinia store for active role
-- Specific mock data values for portfolio, goals, action items, and insights
-- Exact color hex values for the light blue / orange palette
+- None — core features are implemented
 
 ---
 
 ## Next Steps
 
-- Scaffold the Vue project with Vite and Vuetify 3
-- Create the animated abstract background (CSS keyframe gradient blobs)
-- Build the `NavSidebar.vue` component
-- Implement the `RoleSwitcher.vue` component
-- Begin building MVP widgets: PortfolioSnapshot, GoalTracker, ActionItemsPanel, AIInsightFeed
+- Final responsive testing at all breakpoints
+- Deploy to Vercel
+- Gather feedback

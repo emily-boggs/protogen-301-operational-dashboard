@@ -62,27 +62,35 @@ npm run build        # Build for production
 ## Project Structure
 
 ```
-sei-dashboard/
+wealthpulse-dashboard/
 ├── public/                  # Static assets
 │   └── background.svg       # Abstract animated background
 ├── src/
 │   ├── assets/              # Fonts, images, global styles
 │   ├── components/          # Reusable Vue components
+│   │   ├── AppLayout.vue
 │   │   ├── NavSidebar.vue
 │   │   ├── PortfolioSnapshot.vue
 │   │   ├── GoalTracker.vue
 │   │   ├── ActionItemsPanel.vue
 │   │   ├── AIInsightFeed.vue
-│   │   └── RoleSwitcher.vue
+│   │   ├── QuickStats.vue
+│   │   └── QuickConnect.vue
 │   ├── data/                # Mock / static data (JSON)
 │   │   ├── portfolio.json
 │   │   ├── goals.json
 │   │   ├── actionItems.json
 │   │   └── insights.json
+│   ├── stores/              # Shared reactive state
+│   │   ├── role.ts
+│   │   └── completedActions.ts
 │   ├── router/              # Vue Router config
 │   │   └── index.ts
 │   ├── views/               # Page-level views
-│   │   └── DashboardView.vue
+│   │   ├── DashboardView.vue
+│   │   ├── AnalyticsView.vue
+│   │   ├── ReportsView.vue
+│   │   └── ProfileView.vue
 │   ├── App.vue
 │   └── main.ts
 ├── memory-bank/             # Copilot memory bank context files
@@ -97,6 +105,6 @@ sei-dashboard/
 
 - **No backend/API** — all data is static mock JSON for MVP
 - **No authentication** — not required for MVP
-- **MVP personas** — only Client and Financial Advisor are fully implemented; others use placeholders
+- **Two personas** — Client and Financial Advisor are implemented
 - **Browser support** — modern browsers with `backdrop-filter` support (glassmorphism requirement)
 - **Performance** — animated background must run smoothly without impacting UI responsiveness

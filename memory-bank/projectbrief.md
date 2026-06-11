@@ -1,15 +1,15 @@
-# SEI Wealth Management Dashboard
+# WealthPulse Dashboard
 ## Project Brief
 
 ---
 
 ## Overview
 
-A client-centered intelligence dashboard built for SEI Investments,
-a Philadelphia-based wealth management firm. The dashboard provides
-a unified "Client 360" view of a client's financial picture, designed
-to serve multiple personas — including the client, financial advisor,
-estate attorney, and tax advisor — through a single, role-aware interface.
+A client-centered intelligence dashboard built for a wealth management
+investment company. The dashboard provides a unified "Client 360" view
+of a client's financial picture, designed to serve two key personas —
+the client and their financial advisor — through a single, role-aware
+interface.
 
 Rather than surfacing raw data, the dashboard is designed to **explain,
 contextualize, and prompt action** through an AI-powered insight layer
@@ -20,17 +20,16 @@ tailored to each viewer's role.
 
 ## Problem Statement
 
-Wealth management relationships involve multiple stakeholders — clients,
-advisors, attorneys, and tax professionals — who each need different
-information from the same underlying financial data. Today, these
-stakeholders work in silos, often missing critical signals until they
-become problems.
+Wealth management relationships involve multiple stakeholders — clients
+and advisors — who each need different information from the same
+underlying financial data. Today, these stakeholders often work from
+different views, missing critical signals until they become problems.
 
 This dashboard solves that by:
 - Giving each persona a **role-specific lens** on the same client data
 - Surfacing **proactive insights and alerts** before issues escalate
 - Translating financial complexity into **plain language** for clients
-- Enabling advisors and specialists to **act faster** with less digging
+- Enabling advisors to **act faster** with less digging
 
 ---
 
@@ -40,9 +39,6 @@ This dashboard solves that by:
 |---|---|
 | **Client** | Understand how I'm doing and what I need to do |
 | **Financial Advisor** | Identify which clients need attention today |
-| **Estate Attorney / Trust Officer** | Monitor legal structures and distribution schedules |
-| **Tax Advisor / CPA** | Spot tax implications and optimization opportunities |
-| **SEI Relationship Manager** | Ensure account health, compliance, and relationship quality |
 
 ---
 
@@ -65,34 +61,17 @@ Visual progress toward the client's defined financial goals
 on-track / at-risk status indicators.
 
 ### ⚠️ Action Items Panel
-A prioritized list of items requiring attention across all
-stakeholder domains — rebalancing needs, expiring documents,
-upcoming distributions, tax deadlines, and compliance flags.
+A prioritized list of items requiring attention — rebalancing
+needs, upcoming reviews, tax deadlines, and compliance flags.
+Items are role-aware: clients see personal action items while
+advisors see cross-client operational tasks.
 
 ### 🤖 AI Insight Feed
 A persistent, role-aware insight panel that explains what the
-client is looking at in plain language. Insights are tailored
+user is looking at in plain language. Insights are tailored
 to the active persona:
 - **Client:** Plain-language portfolio summaries and reassurances
 - **Advisor:** Rebalancing signals, drift alerts, client engagement cues
-- **Attorney:** Distribution schedules, document expiration warnings
-- **Tax Advisor:** Harvesting opportunities, estimated tax liability
-
-### 📉 Risk & Drift Monitor
-Tracks portfolio allocation drift from target, volatility flags,
-and concentration risk by sector or asset class.
-
-### 🧾 Tax Intelligence Panel
-Year-to-date realized gains/losses, tax loss harvesting
-opportunities, estimated tax liability, and key deadline tracking.
-
-### 📋 Trust & Legal Status
-Distribution schedule, beneficiary record health, document
-review history, and outstanding legal action items.
-
-### 🏢 Relationship Health (SEI Internal)
-Account completeness, missing documentation, last advisor contact,
-SLA status, and compliance flags for internal SEI operations staff.
 
 ---
 
@@ -375,8 +354,7 @@ SLA status, and compliance flags for internal SEI operations staff.
 ### Out of Scope for MVP
 - Live data integrations or API connections
 - Real authentication or user sessions
-- All five persona views (start with Client + Advisor)
-- Tax Intelligence and Trust & Legal panels
+- Additional persona views beyond Client + Advisor
 
 ---
 
@@ -393,5 +371,5 @@ SLA status, and compliance flags for internal SEI operations staff.
 
 ---
 
-*Built for SEI Investments — Philadelphia, PA*
+*WealthPulse — Wealth Management Dashboard*
 *Dashboard Design Course Project — 2026*

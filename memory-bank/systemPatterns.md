@@ -12,17 +12,18 @@ Single-page application (SPA) built with Vue 3 + Vuetify 3, using a component-ba
 flowchart TD
     App[App.vue] --> Router[Vue Router]
     Router --> DV[DashboardView.vue]
-    DV --> NS[NavSidebar.vue]
-    DV --> RS[RoleSwitcher.vue]
+    App --> AL[AppLayout.vue]
+    AL --> NS[NavSidebar.vue]
     DV --> PS[PortfolioSnapshot.vue]
     DV --> GT[GoalTracker.vue]
     DV --> AIP[ActionItemsPanel.vue]
     DV --> AIF[AIInsightFeed.vue]
+    DV --> QS[QuickStats.vue]
+    DV --> QC[QuickConnect.vue]
 
-    RS -->|activeRole| PS
-    RS -->|activeRole| GT
-    RS -->|activeRole| AIP
-    RS -->|activeRole| AIF
+    RoleStore[stores/role.ts] -->|currentRole| DV
+    RoleStore -->|currentRole| AIP
+    RoleStore -->|currentRole| AIF
 
     Data[Static JSON Data] --> PS
     Data --> GT
@@ -35,9 +36,9 @@ flowchart TD
 ## Key Patterns
 
 ### Role-Based Rendering
-- A top-level `RoleSwitcher` component controls the active persona
-- The active role is passed via props or a shared store (Vuex/Pinia)
-- All content panels conditionally render or filter data based on the active role
+- A role switcher in the DashboardView controls the active persona
+- The active role is managed via a shared reactive store (`src/stores/role.ts`)
+- Content panels import `currentRole` and conditionally render or filter data based on it
 - Role switch updates all panels reactively without a full page reload
 
 ### Component Structure

@@ -6,7 +6,7 @@ _Why this project exists and what value it delivers._
 
 ## Purpose
 
-The SEI Wealth Management Dashboard is a client-centered intelligence dashboard built for SEI Investments, a Philadelphia-based wealth management firm. It provides a unified "Client 360" view of a client's financial picture through a single, role-aware interface.
+WealthPulse is a client-centered intelligence dashboard built for a wealth management investment company. It provides a unified "Client 360" view of a client's financial picture through a single, role-aware interface.
 
 Rather than surfacing raw data, the dashboard **explains, contextualizes, and prompts action** through an AI-powered insight layer that translates complex financial information into plain language tailored to each viewer's role.
 
@@ -14,13 +14,13 @@ Rather than surfacing raw data, the dashboard **explains, contextualizes, and pr
 
 ## Problem It Solves
 
-Wealth management relationships involve multiple stakeholders — clients, advisors, attorneys, and tax professionals — who each need different information from the same underlying financial data. Today, these stakeholders work in silos, often missing critical signals until they become problems.
+Wealth management relationships involve multiple stakeholders — clients and advisors — who each need different information from the same underlying financial data. Today, these stakeholders often work from different views, missing critical signals until they become problems.
 
 The dashboard addresses this by:
 - Giving each persona a **role-specific lens** on the same client data
 - Surfacing **proactive insights and alerts** before issues escalate
 - Translating financial complexity into **plain language** for clients
-- Enabling advisors and specialists to **act faster** with less digging
+- Enabling advisors to **act faster** with less digging
 
 ---
 
@@ -30,11 +30,6 @@ The dashboard addresses this by:
 |---|---|
 | **Client** | Understand how I'm doing and what I need to do |
 | **Financial Advisor** | Identify which clients need attention today |
-| **Estate Attorney / Trust Officer** | Monitor legal structures and distribution schedules |
-| **Tax Advisor / CPA** | Spot tax implications and optimization opportunities |
-| **SEI Relationship Manager** | Ensure account health, compliance, and relationship quality |
-
-> **MVP Focus:** Client and Financial Advisor personas are fully built out. Other personas use placeholder content.
 
 ---
 

@@ -41,11 +41,7 @@ _What’s done, what’s next, and current blockers._
 
 ## Future Enhancements (Post-MVP)
 
-- [ ] All five persona views (Estate Attorney, Tax Advisor, SEI Ops)
-- [ ] Tax Intelligence Panel
-- [ ] Trust & Legal Status Panel
-- [ ] Risk & Drift Monitor Panel
-- [ ] Relationship Health Panel (SEI Internal)
+- [ ] Additional persona views (e.g., Estate Attorney, Tax Advisor)
 - [ ] Live data integration / API connections
 - [ ] Authentication & user sessions
 

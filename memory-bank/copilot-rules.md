@@ -45,10 +45,9 @@
 
 ## 📋 MVP Scope Guard
 
-- Only Client and Financial Advisor personas are in scope for MVP
+- Only Client and Financial Advisor personas are in scope
 - No backend API calls — all data is static mock JSON
 - No authentication required
-- Estate Attorney, Tax Advisor, and SEI Ops personas use placeholder content only
 
 ---
 
