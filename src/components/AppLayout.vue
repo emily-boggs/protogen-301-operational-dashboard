@@ -16,9 +16,7 @@ const sidebarItems = [
   { icon: 'mdi-account-circle-outline', label: 'Profile', route: '/profile' },
 ]
 
-const sidebarBottomItems = [
-  { icon: 'mdi-help-circle-outline', label: 'Help & Support' },
-]
+// Help & Support is rendered directly in the template as a mailto link
 
 function handleNavClick(item: any) {
   if (item.action === 'notifications') {

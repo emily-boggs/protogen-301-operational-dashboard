@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { completedActions, markActionComplete } from '../stores/completedActions'
 import { currentRole } from '../stores/role'
