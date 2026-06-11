@@ -70,15 +70,17 @@ function formatCurrency(value: number): string {
 
     <Transition name="slide" mode="out-in">
       <div :key="currentGoal.id" class="goal-card" style="padding: 24px; background: #F5F6FA; border-radius: 12px;">
-        <div class="d-flex align-center" style="margin-bottom: 12px;">
-          <v-icon :icon="currentGoal.icon" color="primary" size="22" style="margin-right: 10px;" aria-hidden="true" />
-          <h4 style="font-size: 1rem; font-family: 'Quicksand', sans-serif; font-weight: 600;">{{ currentGoal.name }}</h4>
+        <div class="goal-card-header" style="margin-bottom: 12px;">
+          <div class="d-flex align-center" style="gap: 10px;">
+            <v-icon :icon="currentGoal.icon" color="primary" size="22" aria-hidden="true" />
+            <h4 style="font-size: 1rem; font-family: 'Quicksand', sans-serif; font-weight: 600;">{{ currentGoal.name }}</h4>
+          </div>
           <v-chip
             :color="statusColor(currentGoal.status)"
             size="small"
             variant="flat"
             :prepend-icon="statusIcon(currentGoal.status)"
-            style="margin-left: 10px;"
+            style="flex-shrink: 0;"
           >
             {{ statusLabel(currentGoal.status) }}
           </v-chip>
@@ -137,6 +139,14 @@ function formatCurrency(value: number): string {
 </template>
 
 <style scoped>
+.goal-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .slider-arrow {
   display: flex;
   align-items: center;

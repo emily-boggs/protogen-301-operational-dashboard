@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { completedActions, markActionComplete } from '../stores/completedActions'
+import { currentRole } from '../stores/role'
 
 const router = useRouter()
 
@@ -30,7 +31,7 @@ function confirmSchedule() {
   selectedSlot.value = null
 }
 
-const actionItems = [
+const clientItems = [
   {
     id: 1,
     title: 'Review updated financial plan',
@@ -52,6 +53,41 @@ const actionItems = [
     action: 'modal',
   },
 ]
+
+const advisorItems = [
+  {
+    id: 101,
+    title: 'Rebalance Park Family Trust',
+    description: 'US Equities allocation has drifted +4% above target. Recommend rebalancing to restore allocation.',
+    priority: 'high',
+    icon: 'mdi-scale-unbalanced',
+    dueDate: 'Apr 28, 2026',
+    linkLabel: 'View Details',
+    action: 'navigate',
+  },
+  {
+    id: 102,
+    title: 'Complete Mitchell annual review',
+    description: 'Sarah Mitchell\'s annual review is 30 days overdue. Schedule and complete review ASAP.',
+    priority: 'high',
+    icon: 'mdi-alert-circle',
+    dueDate: 'Apr 30, 2026',
+    linkLabel: 'Schedule Review',
+    action: 'modal',
+  },
+  {
+    id: 103,
+    title: 'Tax loss harvesting — Chen account',
+    description: 'International equities position showing $12,400 unrealized loss. Harvest before year-end.',
+    priority: 'medium',
+    icon: 'mdi-cash-refund',
+    dueDate: 'May 15, 2026',
+    linkLabel: 'Review Opportunity',
+    action: 'navigate',
+  },
+]
+
+const actionItems = computed(() => currentRole.value === 'advisor' ? advisorItems : clientItems)
 
 function priorityColor(priority: string): string {
   switch (priority) {
@@ -75,7 +111,7 @@ function priorityLabel(priority: string): string {
   return priority.charAt(0).toUpperCase() + priority.slice(1)
 }
 
-function handleAction(item: typeof actionItems[0]) {
+function handleAction(item: any) {
   if (item.action === 'navigate') {
     router.push({ name: 'retirement-projections' })
   } else {
@@ -83,8 +119,8 @@ function handleAction(item: typeof actionItems[0]) {
   }
 }
 
-const pendingItems = computed(() => actionItems.filter(i => !completedActions.has(i.id)))
-const completedItems = computed(() => actionItems.filter(i => completedActions.has(i.id)))
+const pendingItems = computed(() => actionItems.value.filter(i => !completedActions.has(i.id)))
+const completedItems = computed(() => actionItems.value.filter(i => completedActions.has(i.id)))
 </script>
 
 <template>
@@ -113,22 +149,23 @@ const completedItems = computed(() => actionItems.filter(i => completedActions.h
           aria-hidden="true"
         />
         <div class="flex-grow-1">
-          <div class="d-flex align-center mb-1">
-            <span style="font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 0.95rem;">
+          <div class="action-item-header">
+            <span class="action-item-title">
               {{ item.title }}
             </span>
-            <v-spacer />
-            <v-chip
-              :color="priorityColor(item.priority)"
-              size="x-small"
-              variant="flat"
-              :prepend-icon="priorityIcon(item.priority)"
-            >
-              {{ priorityLabel(item.priority) }}
-            </v-chip>
-            <span style="font-size: 0.7rem; color: #546E7A; margin-left: 8px;">
-              Due: {{ item.dueDate }}
-            </span>
+            <div class="action-item-meta">
+              <v-chip
+                :color="priorityColor(item.priority)"
+                size="x-small"
+                variant="flat"
+                :prepend-icon="priorityIcon(item.priority)"
+              >
+                {{ priorityLabel(item.priority) }}
+              </v-chip>
+              <span class="action-item-due">
+                Due: {{ item.dueDate }}
+              </span>
+            </div>
           </div>
           <p style="font-family: 'Open Sans', sans-serif; font-size: 0.82rem; color: #455A64; margin-top: 8px;">
             {{ item.description }}
@@ -254,6 +291,33 @@ const completedItems = computed(() => actionItems.filter(i => completedActions.h
 </template>
 
 <style scoped>
+.action-item-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.action-item-title {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.action-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.action-item-due {
+  font-size: 0.7rem;
+  color: #546E7A;
+  white-space: nowrap;
+}
+
 .action-link {
   display: inline-block;
   margin-top: 12px;
@@ -313,5 +377,12 @@ const completedItems = computed(() => actionItems.filter(i => completedActions.h
 .confirm-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+@media (max-width: 599px) {
+  .action-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
 }
 </style>

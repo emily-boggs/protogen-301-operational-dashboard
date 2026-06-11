@@ -15,9 +15,9 @@ const navItems = [
 <template>
   <nav class="sidebar-inner" aria-label="Main navigation">
     <div class="logo-area mb-6 mt-2 text-center">
-      <v-icon icon="mdi-finance" size="32" color="primary" aria-hidden="true" />
+      <v-icon icon="mdi-pulse" size="32" color="primary" aria-hidden="true" />
       <Transition name="fade">
-        <span v-if="!collapsed" class="logo-text ml-2">SEI</span>
+        <span v-if="!collapsed" class="logo-text ml-2">WealthPulse</span>
       </Transition>
     </div>
 

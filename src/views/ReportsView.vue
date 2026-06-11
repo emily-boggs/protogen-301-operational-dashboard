@@ -83,7 +83,7 @@ function statusLabel(status: string) {
 </script>
 
 <template>
-  <div class="reports-page" style="max-width: 1100px; margin: 0 auto; padding: 40px 24px;">
+  <div class="reports-page">
     <h1 style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.8rem; margin-bottom: 8px;">
       Reports
     </h1>
@@ -195,6 +195,7 @@ function statusLabel(status: string) {
   gap: 16px;
   padding: 16px 0;
   border-bottom: 1px solid #F5F6FA;
+  flex-wrap: wrap;
 }
 
 .report-row:last-child {
@@ -265,6 +266,18 @@ function statusLabel(status: string) {
 @media (max-width: 768px) {
   .reports-grid {
     grid-template-columns: 1fr;
+  }
+
+  .report-row {
+    gap: 12px;
+  }
+
+  .status-badge {
+    order: 3;
+  }
+
+  .download-btn {
+    order: 4;
   }
 }
 </style>

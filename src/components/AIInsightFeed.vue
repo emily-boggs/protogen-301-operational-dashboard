@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import insightsData from '../data/insights.json'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { currentRole } from '../stores/role'
 
 const currentIndex = ref(0)
 
-const insights = insightsData.client
+const insights = computed(() => insightsData[currentRole.value] || insightsData.client)
 
-const currentInsight = computed(() => insights[currentIndex.value])
+const currentInsight = computed(() => insights.value[currentIndex.value])
+
+watch(currentRole, () => {
+  currentIndex.value = 0
+})
 
 function next() {
-  currentIndex.value = (currentIndex.value + 1) % insights.length
+  currentIndex.value = (currentIndex.value + 1) % insights.value.length
 }
 
 function prev() {
-  currentIndex.value = (currentIndex.value - 1 + insights.length) % insights.length
+  currentIndex.value = (currentIndex.value - 1 + insights.value.length) % insights.value.length
 }
 </script>
 

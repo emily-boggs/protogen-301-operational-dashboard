@@ -14,9 +14,9 @@ export default createVuetify({
     sets: { mdi },
   },
   theme: {
-    defaultTheme: 'seiTheme',
+    defaultTheme: 'appTheme',
     themes: {
-      seiTheme: {
+      appTheme: {
         dark: false,
         colors: {
           primary: '#0E7490',

@@ -7,7 +7,7 @@ const teamMembers = [
   { initials: 'JM', name: 'James Mitchell', role: 'Financial Advisor', color: '#0E7490', avatar: 'https://i.pravatar.cc/150?img=12' },
   { initials: 'SK', name: 'Sarah Kim', role: 'Estate Attorney', color: '#7B1FA2', avatar: 'https://i.pravatar.cc/150?img=5' },
   { initials: 'RP', name: 'Robert Park', role: 'Tax Advisor', color: '#EA580C', avatar: 'https://i.pravatar.cc/150?img=53' },
-  { initials: 'LC', name: 'Lisa Chen', role: 'SEI Operations', color: '#2E7D32', avatar: 'https://i.pravatar.cc/150?img=9' },
+  { initials: 'LC', name: 'Lisa Chen', role: 'Operations', color: '#2E7D32', avatar: 'https://i.pravatar.cc/150?img=9' },
   { initials: 'DW', name: 'David Wu', role: 'Portfolio Analyst', color: '#1565C0', avatar: 'https://i.pravatar.cc/150?img=60' },
 ]
 
@@ -106,7 +106,7 @@ function submitReply(index: number) {
 
     <!-- View Messages Modal -->
     <v-dialog v-model="showMessagesPanel" max-width="500">
-      <v-card style="border-radius: 16px; padding: 24px;">
+      <v-card style="border-radius: 16px; padding: 28px 32px;">
         <div class="d-flex align-center" style="margin-bottom: 20px;">
           <v-icon icon="mdi-message-text" color="primary" size="24" style="margin-right: 10px;" />
           <h3 style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.1rem;">Messages</h3>
@@ -142,18 +142,26 @@ function submitReply(index: number) {
               </div>
 
               <!-- Reply input -->
-              <div class="reply-input-row" v-if="replyingTo === i">
-                <input
+              <div class="reply-input-area" v-if="replyingTo === i">
+                <textarea
                   v-model="replyText"
-                  class="reply-input"
-                  placeholder="Type a reply..."
-                  @keyup.enter="submitReply(i)"
+                  class="reply-textarea"
+                  placeholder="Write a reply..."
+                  rows="3"
+                  @keydown.enter.exact.prevent="submitReply(i)"
                 />
-                <button class="reply-send-btn" @click="submitReply(i)">
-                  <v-icon icon="mdi-send" size="16" />
-                </button>
+                <div class="reply-actions">
+                  <button class="reply-cancel-btn" @click="replyingTo = null; replyText = ''">
+                    Cancel
+                  </button>
+                  <button class="reply-send-btn" :disabled="!replyText.trim()" @click="submitReply(i)">
+                    <v-icon icon="mdi-send" size="14" style="margin-right: 4px;" />
+                    Send
+                  </button>
+                </div>
               </div>
               <button v-else class="reply-btn" @click="replyingTo = i">
+                <v-icon icon="mdi-reply" size="14" style="margin-right: 4px;" />
                 Reply
               </button>
             </div>
@@ -169,6 +177,7 @@ function submitReply(index: number) {
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .team-member {
@@ -218,13 +227,15 @@ function submitReply(index: number) {
   gap: 0;
   max-height: 400px;
   overflow-y: auto;
+  padding-right: 12px;
+  margin-right: -4px;
 }
 
 .message-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 14px 0;
+  padding: 14px 4px;
   border-bottom: 1px solid #F5F6FA;
 }
 
@@ -296,5 +307,136 @@ function submitReply(index: number) {
 
 .compose-textarea::placeholder {
   color: #78819B;
+}
+
+/* Reply Styles */
+.replies-section {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #F0F1F5;
+}
+
+.reply-item {
+  background: #F5F6FA;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}
+
+.reply-from {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #0E7490;
+  margin-right: 8px;
+}
+
+.reply-time {
+  font-size: 0.65rem;
+  color: #A0A8B8;
+}
+
+.reply-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #1C2536;
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+.reply-input-area {
+  margin-top: 12px;
+}
+
+.reply-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #ECEEF4;
+  border-radius: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+  color: #1C2536;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.reply-textarea:focus {
+  border-color: #0E7490;
+}
+
+.reply-textarea::placeholder {
+  color: #A0A8B8;
+}
+
+.reply-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.reply-cancel-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #ECEEF4;
+  background: transparent;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #78819B;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reply-cancel-btn:hover {
+  background: #F5F6FA;
+  color: #1C2536;
+}
+
+.reply-send-btn {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #0E7490;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reply-send-btn:hover:not(:disabled) {
+  background: #0A5E75;
+}
+
+.reply-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.reply-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #ECEEF4;
+  background: transparent;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0E7490;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reply-btn:hover {
+  background: #E6F7F9;
+  border-color: #0E7490;
 }
 </style>

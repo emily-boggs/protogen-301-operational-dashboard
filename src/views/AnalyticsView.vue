@@ -57,7 +57,7 @@ function trendColor(trend: string) {
 </script>
 
 <template>
-  <div class="analytics-page" style="max-width: 1100px; margin: 0 auto; padding: 40px 24px;">
+  <div class="analytics-page">
     <h1 style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 1.8rem; margin-bottom: 8px;">
       Analytics
     </h1>
@@ -195,12 +195,14 @@ function trendColor(trend: string) {
   gap: 12px;
   height: 120px;
   padding-top: 20px;
+  overflow: hidden;
 }
 
 .bar-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
   flex: 1;
   gap: 4px;
 }
@@ -313,6 +315,43 @@ function trendColor(trend: string) {
 @media (max-width: 768px) {
   .analytics-grid {
     grid-template-columns: 1fr;
+  }
+
+  .bar-chart {
+    gap: 6px;
+  }
+
+  .bar-value {
+    display: none;
+  }
+
+  .holdings-header,
+  .holdings-row {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .holdings-header span:nth-child(2),
+  .holdings-row span:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .risk-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .holdings-header,
+  .holdings-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .holdings-header span:nth-child(2),
+  .holdings-row span:nth-child(2),
+  .holdings-header span:nth-child(4),
+  .holdings-row span:nth-child(4) {
+    display: none;
   }
 }
 </style>

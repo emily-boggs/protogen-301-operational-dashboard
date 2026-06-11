@@ -4,6 +4,7 @@ import ActionDetailView from '../views/ActionDetailView.vue'
 import AnalyticsView from '../views/AnalyticsView.vue'
 import ReportsView from '../views/ReportsView.vue'
 import RetirementProjectionsView from '../views/RetirementProjectionsView.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/reports',
     name: 'reports',
     component: ReportsView,
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileView,
   },
   {
     path: '/retirement-projections',
