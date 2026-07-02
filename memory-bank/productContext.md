@@ -47,5 +47,5 @@ The dashboard addresses this by:
 
 - **Role-aware UI** — one dashboard, multiple persona-specific views
 - **AI Insight Feed** — plain-language, role-tailored intelligence rather than raw data
-- **Glassmorphism design** — premium, modern aesthetic that builds trust
+- **Clean card design** — professional, modern aesthetic with white cards, subtle shadows, and a teal/orange accent palette
 - **Action-oriented** — prioritized items and alerts drive user behavior

@@ -6,14 +6,20 @@ _Common design and architecture patterns used in the project._
 
 ## Architecture Overview
 
-Single-page application (SPA) built with Vue 3 + Vuetify 3, using a component-based architecture with role-aware rendering.
+Single-page application (SPA) built with Vue 3 + Vuetify 4, using a component-based architecture with role-aware rendering.
 
 ```mermaid
 flowchart TD
     App[App.vue] --> Router[Vue Router]
     Router --> DV[DashboardView.vue]
+    Router --> ADV[ActionDetailView.vue]
+    Router --> AV[AnalyticsView.vue]
+    Router --> RV[ReportsView.vue]
+    Router --> RPV[RetirementProjectionsView.vue]
+    Router --> PV[ProfileView.vue]
     App --> AL[AppLayout.vue]
     AL --> NS[NavSidebar.vue]
+    AL --> ND[NotificationsDrawer.vue]
     DV --> PS[PortfolioSnapshot.vue]
     DV --> GT[GoalTracker.vue]
     DV --> AIP[ActionItemsPanel.vue]
@@ -24,6 +30,7 @@ flowchart TD
     RoleStore[stores/role.ts] -->|currentRole| DV
     RoleStore -->|currentRole| AIP
     RoleStore -->|currentRole| AIF
+    RoleStore -->|currentRole| QS
 
     Data[Static JSON Data] --> PS
     Data --> GT
@@ -36,13 +43,13 @@ flowchart TD
 ## Key Patterns
 
 ### Role-Based Rendering
-- A role switcher in the DashboardView controls the active persona
+- A role switcher (pill-style toggle) in DashboardView controls the active persona
 - The active role is managed via a shared reactive store (`src/stores/role.ts`)
 - Content panels import `currentRole` and conditionally render or filter data based on it
 - Role switch updates all panels reactively without a full page reload
 
 ### Component Structure
-- **Page-level views** in `src/views/` (e.g., `DashboardView.vue`)
+- **Page-level views** in `src/views/` (DashboardView, ActionDetailView, AnalyticsView, ReportsView, RetirementProjectionsView, ProfileView)
 - **Reusable widget components** in `src/components/`
 - **Static mock data** in `src/data/` as JSON files
 - Each component is self-contained with its own template, logic, and scoped styles
@@ -50,25 +57,27 @@ flowchart TD
 ### Data Flow
 - Mock data loaded from static JSON files (`portfolio.json`, `goals.json`, `actionItems.json`, `insights.json`)
 - Data is filtered/transformed at the component level based on the active role
-- No backend API calls in MVP — all data is static
+- Completed actions tracked in `src/stores/completedActions.ts`
+- No backend API calls — all data is static
 
-### Design System — Glassmorphism
-- All primary cards use semi-transparent backgrounds (`rgba` white) with `backdrop-filter: blur(12–16px)`
-- Subtle inner border glow using light white/teal `rgba` border
-- Abstract animated background (CSS keyframe gradient blobs) sits behind all content
-- No card background is fully opaque
+### Design System — Clean Card UI
+- All cards use solid white backgrounds (#FFFFFF) with subtle box shadows
+- Hover lift effect: `transform: translateY(-2px)` with shadow deepening
+- Border radius: 16px on cards
+- Background: light gray (#F5F6FA)
+- No glassmorphism — clean, professional aesthetic
 
 ### Layout Pattern
-- **Side navigation** — icon-first design, labels visible on expand/hover
-- **Card grid** — generous padding and spacing between widget cards
-- **Persistent AI Insight panel** anchored to the right side on desktop
+- **Side navigation** — collapsible sidebar with icon + label nav items
+- **Card grid** — two-column layout (content-left + content-right)
+- **Notifications drawer** — slides out from sidebar
 - **Responsive breakpoints:**
   - Desktop (1200px+): Full side nav + multi-column card grid
-  - Tablet (768px–1199px): Collapsed side nav + 2-column grid
-  - Mobile (<768px): Bottom nav/hamburger + single-column stacked cards
+  - Tablet (768px-1199px): Collapsed side nav + 2-column grid
+  - Mobile (<768px): Hamburger menu + single-column stacked cards
 
 ### Motion & Transitions
-- Background: slow CSS keyframe animation on gradient blobs (`animation: float 12s ease-in-out infinite`)
-- Cards: subtle hover lift (`transform: translateY(-4px)`) with shadow deepening
+- Cards: subtle hover lift with shadow deepening
 - Page transitions: Vue `<Transition>` component
-- Insight cards: fade + slide up on load and role switch
+- Notifications drawer: slide transition
+- Role switcher: instant reactive update across all panels

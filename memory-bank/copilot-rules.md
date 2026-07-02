@@ -1,4 +1,4 @@
-## 🚨 Never Upload Secrets
+## Never Upload Secrets
 
 - Do not store API keys or `.env` in repo.
 - Use `.env.example` with placeholders.
@@ -6,17 +6,18 @@
 
 ---
 
-## 🎨 Design Rules
+## Design Rules
 
-- All primary cards **must** use glassmorphism: semi-transparent backgrounds with `backdrop-filter: blur(12–16px)`
-- No card background should be fully opaque
+- All primary cards use solid white backgrounds (#FFFFFF) with subtle box shadows
+- Cards have 16px border radius with hover lift effect
 - Status indicators must always combine **icon + color + label** — never rely on color alone
 - Use **Quicksand** for headlines/numbers, **Open Sans** for body text — no exceptions
-- Use **Material Design Icons** via Vuetify 3 for all iconography
+- Use **Material Design Icons** via @mdi/font for all iconography
+- Primary color: teal (#0E7490), secondary: orange (#EA580C)
 
 ---
 
-## 🧩 Component Rules
+## Component Rules
 
 - Each widget component should be self-contained (template, logic, scoped styles)
 - All components must accept and respond to the active role (persona)
@@ -25,16 +26,15 @@
 
 ---
 
-## 📱 Responsive Rules
+## Responsive Rules
 
 - All components must work at 320px, 768px, and 1200px+ viewports
 - Touch targets must be at minimum 44x44px on mobile
-- AI Insight panel collapses to a floating action button on mobile
-- Side nav collapses to bottom nav or hamburger menu on mobile
+- Side nav collapses to hamburger menu on mobile
 
 ---
 
-## 🏗️ Code Conventions
+## Code Conventions
 
 - Use Vue 3 Composition API with `<script setup>` syntax
 - TypeScript for all `.ts` and `.vue` files
@@ -43,22 +43,8 @@
 
 ---
 
-## 📋 MVP Scope Guard
+## MVP Scope Guard
 
 - Only Client and Financial Advisor personas are in scope
 - No backend API calls — all data is static mock JSON
 - No authentication required
-
----
-
-## ♿ Accessibility Rules (WCAG 2.1 AA)
-
-- All text must meet WCAG AA contrast ratios: 4.5:1 normal text, 3:1 large text (18px+ bold or 24px+ regular)
-- All icon-only buttons must have `aria-label` attributes
-- Decorative icons must have `aria-hidden="true"`
-- Progress bars must have accessible labels (`aria-label`)
-- All interactive elements must have visible focus indicators
-- Provide a skip-to-content link before the main navigation
-- Use `aria-live="polite"` for content that changes on role switch
-- All animations must respect `prefers-reduced-motion: reduce`
-- Never rely on color alone for meaning — always pair with icon + text label
